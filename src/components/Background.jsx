@@ -109,7 +109,7 @@ function RippleWall({
       {/* Hidden base: generates the geometry at the right size */}
       <Text3D
         ref={baseRef}
-        font="/fonts/helvetiker_bold.typeface.json"
+        font="public/fonts/helvetiker_bold.typeface.json"
         size={textSize}
         height={0.15}
         curveSegments={12}
