@@ -2,13 +2,14 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Text3D } from "@react-three/drei";
 import { useRef, useEffect, useMemo, useState } from "react";
 import * as THREE from "three";
+const FONT_URL = import.meta.env.BASE_URL + "fonts/helvetiker_bold.typeface.json";
 
 function RippleWall({
   text = "PHOTON STUDIO™",
   sizeMultiplier = 1 / 16, // text size relative to viewport height
-  gapX = 1.05, // horizontal spacing multiplier
-  gapY = 1.2, // vertical spacing multiplier
-  brickOffset = 0.5, // how much to offset every other row (0..1 of tile width)
+  gapX = 1.05,             // horizontal spacing multiplier
+  gapY = 1.2,              // vertical spacing multiplier
+  brickOffset = 0.5,       // how much to offset every other row (0..1 of tile width)
 }) {
   const baseRef = useRef();
   const { viewport } = useThree();
@@ -26,7 +27,6 @@ function RippleWall({
       vertexShader: `
         precision highp float;
         uniform float uTime;
-        // We use world position so each tile gets a unique wave phase
         void main() {
           vec3 p = position;
           vec3 worldPos = (modelMatrix * vec4(p, 1.0)).xyz;
@@ -39,8 +39,7 @@ function RippleWall({
       fragmentShader: `
         precision mediump float;
         void main() {
-          // dark watery blue
-          gl_FragColor = vec4(0.318, 0.824, 0.859, 1);
+          gl_FragColor = vec4(0.318, 0.824, 0.859, 1.0);
         }
       `,
     });
@@ -59,8 +58,8 @@ function RippleWall({
     g.center();
     g.computeBoundingBox?.();
     const bb = g.boundingBox;
-    const w = bb.max.x - bb.min.x || 1;
-    const h = bb.max.y - bb.min.y || 1;
+    const w = bb ? (bb.max.x - bb.min.x || 1) : 1;
+    const h = bb ? (bb.max.y - bb.min.y || 1) : 1;
     setGeo(g);
     setTileSize({ w, h });
   }, [viewport.width, viewport.height]);
@@ -75,7 +74,7 @@ function RippleWall({
     const tileW = tileSize.w * gapX;
     const tileH = tileSize.h * gapY;
 
-    // +3 gives room for the half-tile shifts on odd rows
+    // +3 gives room for half-tile shifts on odd rows
     const cols = Math.ceil(viewport.width / tileW) + 3;
     const rows = Math.ceil(viewport.height / tileH) + 2;
 
@@ -83,10 +82,10 @@ function RippleWall({
     const startY = -((rows - 1) * tileH) / 2;
 
     const arr = [];
-    const brick = brickOffset ?? 10; // 0.5 = classic running bond
+    const brick = typeof brickOffset === "number" ? brickOffset : 0.5; // default 0.5
 
     for (let r = 0; r < rows; r++) {
-      const offsetX = r % 2 ? brick * tileW : 5; // shift odd rows by % of tile width
+      const offsetX = r % 2 ? brick * tileW : 0; // odd rows shifted, even rows not
       for (let c = 0; c < cols; c++) {
         const x = startX + c * tileW + offsetX;
         const y = startY + r * tileH;
@@ -94,22 +93,14 @@ function RippleWall({
       }
     }
     return arr;
-  }, [
-    tileSize.w,
-    tileSize.h,
-    gapX,
-    gapY,
-    brickOffset,
-    viewport.width,
-    viewport.height,
-  ]);
+  }, [tileSize.w, tileSize.h, gapX, gapY, brickOffset, viewport.width, viewport.height]);
 
   return (
     <>
       {/* Hidden base: generates the geometry at the right size */}
       <Text3D
         ref={baseRef}
-        font="public/fonts/helvetiker_bold.typeface.json"
+        font={FONT_URL}
         size={textSize}
         height={0.15}
         curveSegments={12}
