@@ -5,11 +5,11 @@ import * as THREE from "three";
 const FONT_URL = import.meta.env.BASE_URL + "fonts/helvetiker_bold.typeface.json";
 
 function RippleWall({
-  text = "PHOTON STUDIO™",
+  text = "PHOTON STUDIO",
   sizeMultiplier = 1 / 16, // text size relative to viewport height
   gapX = 1.05,             // horizontal spacing multiplier
   gapY = 1.2,              // vertical spacing multiplier
-  brickOffset = 0.5,       // how much to offset every other row (0..1 of tile width)
+  brickOffset = 0.25,       // how much to offset every other row (0..1 of tile width)
 }) {
   const baseRef = useRef();
   const { viewport } = useThree();
