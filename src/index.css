@@ -409,7 +409,7 @@ a:hover {
 }
 
 /* =============================================================================
-   NAVBAR (merged with burger styles)
+   NAVBAR
 ============================================================================= */
 .navbar {
   position: sticky;
@@ -425,7 +425,7 @@ a:hover {
   padding: var(--space-3) var(--space-5);
   background: transparent;
   border-bottom: var(--border);
-  overflow: visible; /* needed for the dropdown panel */
+  overflow: visible;
 }
 
 .navbar::before {
@@ -488,7 +488,6 @@ a:hover {
 }
 .menu-toggle:hover { background: rgba(16, 22, 41, 0.75); }
 
-/* Optional page dimmer while menu is open */
 .nav-backdrop {
   position: fixed;
   inset: 0;
@@ -497,7 +496,7 @@ a:hover {
   padding: 0;
   margin: 0;
   cursor: default;
-  z-index: 900; /* under .navbar (1000) but above page */
+  z-index: 900;
 }
 
 /* ---------------- Mobile layout ---------------- */
@@ -536,7 +535,6 @@ a:hover {
     transition: opacity 150ms ease, transform 150ms ease;
   }
 
-  /* Closed state (controlled by data-open on the UL) */
   .nav-links[data-open="false"] {
     pointer-events: none;
     opacity: 0;
@@ -550,7 +548,6 @@ a:hover {
     transform: translateY(0) scaleY(1);
   }
 
-  /* Make links span full width inside the panel */
   .nav-link {
     display: block;
     width: 100%;
@@ -598,7 +595,7 @@ a:hover {
   background: #12203a;
 }
 
-/* Buttons — unified base + variants */
+/* Buttons */
 .btn {
   --btn-bg: rgba(255, 255, 255, 0.08);
   --btn-ink: var(--text);
@@ -747,13 +744,12 @@ a:hover {
 }
 
 /* =============================================================================
-   MISC — small helpers
+   MISC
 ============================================================================= */
 .welcome {
   margin: 0 0 12px 0;
 }
 
-/* Responsive polish */
 @media (min-width: 1280px) {
   .page {
     max-width: 1200px;
@@ -776,7 +772,6 @@ a:hover {
 /* =============================================================================
    CART WIDGET
 ============================================================================= */
-
 /* Cart button that lives in the navbar */
 .cart-btn {
   display: inline-flex;
@@ -872,7 +867,6 @@ a:hover {
   pointer-events: auto;
 }
 
-/* Right-side sliding panel */
 .cart-drawer__panel {
   position: absolute;
   top: 0;
@@ -1087,7 +1081,6 @@ a:hover {
   margin: 0 auto;
 }
 
-/* Fallback for browsers without backdrop-filter support */
 @supports not (
   (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))
 ) {
