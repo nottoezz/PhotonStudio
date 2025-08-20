@@ -108,7 +108,7 @@ export default function Login() {
             {/* show/hide toggle */}
             <button
               type="button"
-              className="btn btn--ghost"
+              className="btn btn--ghost btn--small"
               onClick={() => setShowPw((s) => !s)}
               aria-pressed={showPw}
               style={{ padding: "0.35rem 0.6rem" }}

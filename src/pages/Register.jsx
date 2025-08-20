@@ -203,7 +203,7 @@ export default function Register() {
             <label htmlFor="password" className="label" style={{ margin: 0 }}>Password</label>
             <button
               type="button"
-              className="btn btn--ghost"
+              className="btn btn--ghost btn--small"
               onClick={() => setShowPw((s) => !s)}
               aria-pressed={showPw}
               style={{ padding: "0.35rem 0.6rem" }}
@@ -266,7 +266,7 @@ export default function Register() {
             </label>
             <button
               type="button"
-              className="btn btn--ghost"
+              className="btn btn--ghost btn--small"
               onClick={() => setShowConfirm((s) => !s)}
               aria-pressed={showConfirm}
               style={{ padding: "0.35rem 0.6rem" }}
