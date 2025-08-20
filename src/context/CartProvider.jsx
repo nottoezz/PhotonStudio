@@ -1,12 +1,6 @@
 import { useEffect, useMemo, useState, useCallback } from 'react';
 import { CartContext } from './cart-context.js';
 
-/**
- * Cart shape:
- * items: [{ key, id, title, price, img, colour, qty }]
- * count: total quantity
- * total: sum(price * qty)
- */
 export function CartProvider({ children }) {
   const [items, setItems] = useState(() => {
     try {
@@ -18,14 +12,12 @@ export function CartProvider({ children }) {
     }
   });
 
-  // If a previous project stored a non-array, auto-migrate to []
   useEffect(() => {
     if (!Array.isArray(items)) {
       setItems([]);
     }
   }, [items]);
 
-  // Persist
   useEffect(() => {
     if (Array.isArray(items)) {
       localStorage.setItem('cart:v1', JSON.stringify(items));

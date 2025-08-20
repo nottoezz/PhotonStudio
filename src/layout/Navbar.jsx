@@ -14,10 +14,8 @@ export default function NavBar() {
     navigate('/');
   };
 
-  // Close menu on route change
   useEffect(() => { setOpen(false); }, [location.pathname]);
 
-  // Close on Escape
   useEffect(() => {
     const onKey = (e) => e.key === 'Escape' && setOpen(false);
     if (open) window.addEventListener('keydown', onKey);

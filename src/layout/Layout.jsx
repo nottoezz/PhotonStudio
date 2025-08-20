@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import NavBar from './Navbar.jsx';
-import Background from '../components/Background'; // ← adjust path if needed
+import Background from '../components/Background';
 
 export default function Layout() {
   return (
@@ -9,8 +9,8 @@ export default function Layout() {
       style={{
         position: 'relative',
         minHeight: '100vh',
-        isolation: 'isolate', // create local stacking context
-        overflow: 'hidden',   // avoids stray scrollbars from fixed canvas
+        isolation: 'isolate',
+        overflow: 'hidden',
       }}
     >
       {/* Persistent animated background behind everything */}
@@ -21,7 +21,7 @@ export default function Layout() {
         <NavBar />
       </div>
 
-      {/* Page content above the canvas (below navbar if needed) */}
+      {/* Page content above the canvas */}
       <main
         className="page"
         style={{

@@ -18,7 +18,6 @@ export default function Login() {
 
   // Formik manages the form
   const formik = useFormik({
-    // starting values for fields
     initialValues: { email: "", password: "", remember: false },
 
     // validation rules
@@ -40,7 +39,7 @@ export default function Login() {
       const { ok, user } = await verifyLogin(values.email, values.password);
 
       if (!ok) {
-        helpers.setStatus("Invalid email or password"); // show error
+        helpers.setStatus("Invalid email or password");
         return;
       }
 
@@ -152,7 +151,7 @@ export default function Login() {
             Remember me
           </label>
 
-          {/* Optional: swap href to your real reset route */}
+          {/* Optional */}
           <a href="/reset" className="muted" style={{ textDecoration: "none" }}>
             Forgot password?
           </a>

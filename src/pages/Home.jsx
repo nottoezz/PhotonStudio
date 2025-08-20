@@ -24,8 +24,8 @@ export default function Home() {
 
     const lock = () => {
       html.style.overflow = "hidden";
-      body.style.overflow = "hidden";           // helps iOS Safari
-      html.style.overscrollBehavior = "contain"; // prevent bounce
+      body.style.overflow = "hidden";
+      html.style.overscrollBehavior = "contain";
     };
 
     const unlock = () => {
@@ -42,7 +42,6 @@ export default function Home() {
 
     const io = new IntersectionObserver(
       ([entry]) => {
-        // fully visible -> lock; otherwise -> unlock
         entry.intersectionRatio >= 1 ? lock() : unlock();
       },
       { threshold: [1] }
@@ -59,7 +58,7 @@ export default function Home() {
       window.removeEventListener("resize", onResize);
       unlock();
     };
-  }, [isLoggedIn]); // ref target changes with the conditional markup
+  }, [isLoggedIn]);
 
   function handleLogout() {
     logout();

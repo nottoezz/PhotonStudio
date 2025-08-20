@@ -6,10 +6,10 @@ const FONT_URL = import.meta.env.BASE_URL + "fonts/helvetiker_bold.typeface.json
 
 function RippleWall({
   text = "PHOTON STUDIO",
-  sizeMultiplier = 1 / 16, // text size relative to viewport height
-  gapX = 1.05,             // horizontal spacing multiplier
-  gapY = 1.2,              // vertical spacing multiplier
-  brickOffset = 0.25,       // how much to offset every other row (0..1 of tile width)
+  sizeMultiplier = 1 / 16,
+  gapX = 1.05,
+  gapY = 1.2,
+  brickOffset = 0.25,
 }) {
   const baseRef = useRef();
   const { viewport } = useThree();
@@ -50,7 +50,7 @@ function RippleWall({
     material.uniforms.uTime.value = state.clock.elapsedTime;
   });
 
-  // After base Text3D mounts, capture its geometry + size
+  // After base Text3D mounts
   useEffect(() => {
     const m = baseRef.current;
     if (!m) return;
@@ -67,14 +67,13 @@ function RippleWall({
   // Text size scales with viewport height for stability
   const textSize = viewport.height * sizeMultiplier;
 
-  // Compute grid positions to cover viewport (with a small margin)
+  // Compute grid positions to cover viewport
   const positions = useMemo(() => {
     if (!tileSize.w || !tileSize.h) return [];
 
     const tileW = tileSize.w * gapX;
     const tileH = tileSize.h * gapY;
 
-    // +3 gives room for half-tile shifts on odd rows
     const cols = Math.ceil(viewport.width / tileW) + 3;
     const rows = Math.ceil(viewport.height / tileH) + 2;
 
@@ -82,10 +81,10 @@ function RippleWall({
     const startY = -((rows - 1) * tileH) / 2;
 
     const arr = [];
-    const brick = typeof brickOffset === "number" ? brickOffset : 0.5; // default 0.5
+    const brick = typeof brickOffset === "number" ? brickOffset : 0.5;
 
     for (let r = 0; r < rows; r++) {
-      const offsetX = r % 2 ? brick * tileW : 0; // odd rows shifted, even rows not
+      const offsetX = r % 2 ? brick * tileW : 0;
       for (let c = 0; c < cols; c++) {
         const x = startX + c * tileW + offsetX;
         const y = startY + r * tileH;
@@ -97,7 +96,7 @@ function RippleWall({
 
   return (
     <>
-      {/* Hidden base: generates the geometry at the right size */}
+      {/* Hidden base */}
       <Text3D
         ref={baseRef}
         font={FONT_URL}

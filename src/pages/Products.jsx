@@ -109,7 +109,7 @@ export default function Products() {
   // ---- Lightbox state ----
   const [viewer, setViewer] = useState({
     open: false,
-    index: 0, // index in PRODUCTS
+    index: 0,
     zoom: 1,
   });
 

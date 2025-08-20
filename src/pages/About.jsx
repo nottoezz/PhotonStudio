@@ -1,4 +1,3 @@
-// src/pages/About.jsx
 export default function About() {
   return (
     <main className="about glass">
