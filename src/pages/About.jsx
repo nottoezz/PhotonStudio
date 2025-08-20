@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function About() {
   return (
     <main className="about glass">
@@ -15,12 +17,13 @@ export default function About() {
             </p>
 
             <div className="hero-cta">
-              <a href="/products" className="btn btn--primary">
+              {/* Internal nav with HashRouter-safe links */}
+              <Link to="/products" className="btn btn--primary">
                 Shop products
-              </a>
-              <a href="/contact" className="btn btn--ghost">
+              </Link>
+              <Link to="/Contact" className="btn btn--ghost">
                 Contact us
-              </a>
+              </Link>
             </div>
 
             <ul className="kpis" aria-label="Key product stats">
@@ -58,9 +61,7 @@ export default function About() {
             </figure>
 
             <article className="story-card glass">
-              <h2 className="section-title">
-                A small studio, With big ideas
-              </h2>
+              <h2 className="section-title">A small studio, With big ideas</h2>
               <p className="prose">
                 We started with a simple idea: fewer, better things. That means
                 sweat-the-details design, responsible materials, and pricing

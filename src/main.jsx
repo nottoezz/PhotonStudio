@@ -1,3 +1,4 @@
+// main.jsx
 import React from "react";
 import { createRoot } from "react-dom/client";
 import { createHashRouter, RouterProvider } from "react-router-dom";
@@ -13,6 +14,7 @@ import Products from "./pages/Products.jsx";
 import About from "./pages/About.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
+import Contact from "./pages/Contact.jsx";
 
 const router = createHashRouter([
   {
@@ -22,6 +24,7 @@ const router = createHashRouter([
       { index: true, element: <Home /> },
       { path: "products", element: <Products /> },
       { path: "about", element: <About /> },
+      { path: "contact", element: <Contact /> },
       { path: "login", element: <Login /> },
       { path: "register", element: <Register /> },
     ],
