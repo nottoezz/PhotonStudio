@@ -1,6 +1,6 @@
-# 🛍️ React Online Store
+# React Online Store
 
-A lightweight online store built with **React + Vite**, featuring **React Router** navigation, **Formik** forms with validation, and a simple cart with a floating total. Dark, modern UI powered by CSS variables.
+A lightweight demo storefront built with **React + Vite**, featuring client-side routing, form validation, and a simple cart with a floating total. The interface uses a dark theme driven by CSS variables.
 
 <p align="center">
   <a href="https://nodejs.org/en">Node</a> ·
@@ -12,75 +12,49 @@ A lightweight online store built with **React + Vite**, featuring **React Router
 
 ---
 
-## ✨ Features
+## Features
 
-- **Product catalogue**
-  - Grid of products with image, title, description, price
-  - Color/variant select per product
-  - “Buy” button updates a floating **Total Price** widget
-- **Auth**
-  - **Register** (first name, surname, email, strong password, confirm)
-  - **Login** (email + password)
+- **Catalogue**
+  - Grid of products with image, title, description, and price
+  - Per-item color/variant selection
+  - “Buy” updates a floating **Total Price** widget
+- **Authentication (Demo)**
+  - Registration: first name, surname, email, password + confirmation
+  - Login: email + password
   - Client-side validation with Formik
   - Demo persistence via `localStorage` (no backend)
 - **Navigation**
   - Pages: `Home`, `Products`, `About`, `Login`, `Register`
-  - Nav reflects auth state (Login/Register ↔ Welcome/Logout)
+  - Navbar reflects auth state (Login/Register ↔ Welcome/Logout)
 - **Styling**
-  - Dark theme with CSS variables (tokens)
-  - Glass cards, subtle shadows, responsive layout
+  - Dark theme using CSS variables (design tokens)
+  - Glass-style cards, subtle shadows, responsive layout
 
 ---
 
-## 📦 Get the Code
+## Getting Started (Local)
 
-**Download ZIP (GitHub default branch)**  
-[Download the latest source as ZIP](archive/refs/heads/main.zip)
-
-**Degit (no git history)**
-```bash
-npx degit YOUR_USERNAME/REPO my-store
-cd my-store
-npm install
-```
-
-**Git clone**
-```bash
-git clone https://github.com/YOUR_USERNAME/REPO.git
-cd REPO
-npm install
-```
-
-> Replace `YOUR_USERNAME/REPO` with your GitHub handle and repo name. If your default branch is `master`, change links accordingly.
-
----
-
-## 🛠️ Scripts
-
-```bash
-npm run dev       # start dev server
-npm run build     # production build
-npm run preview   # preview production build locally
-```
-
----
-
-## 🚀 Quick Start
+> Requires **Node 18+**
 
 ```bash
 npm install
 npm run dev
-# open http://localhost:5173
+# then open http://localhost:5173
 ```
-
-1) Register a new account (valid email, strong password).  
-2) Login with the same credentials.  
-3) Browse **Products** and click **Buy** — the floating **Total Price** will appear.  
-4) Logout anytime from the navbar.
 
 ---
 
-## 📁 Project Structure
+## Scripts
+
+```bash
+npm run dev       # Start the development server
+npm run build     # Create a production build
+npm run preview   # Preview the production build locally
+```
+
+---
+
+## Project Structure
 
 ```
 src/
@@ -90,30 +64,37 @@ src/
 │  ├─ AuthProvider.jsx
 │  ├─ CartProvider.jsx
 │  └─ useAuth.js / useCart.js
+├─ layout/
+│  └─ Layout.jsx
 ├─ pages/
 │  ├─ Home.jsx
 │  ├─ Products.jsx
 │  ├─ About.jsx
 │  ├─ Login.jsx
 │  └─ Register.jsx
-├─ routes/
-│  └─ Layout.jsx
 ├─ index.css
 └─ main.jsx
 ```
 
 ---
 
-## 🔐 Notes
+## Routing & Hosting Notes
 
-- This project is **demo-only**. Auth uses `localStorage`; there’s **no server** or real encryption.
-- Do not use as-is for production. For real apps, add a backend, proper auth, and secure storage.
+- The app uses **React Router**. For static hosting (e.g., GitHub Pages), use a hash-based router (e.g., `createHashRouter`) or configure a SPA fallback to avoid 404s on refresh.
+- All data is in-memory or `localStorage`; there is no server API.
 
 ---
 
-## 🧩 Tech Stack
+## Security & Limitations
 
-- **React 18**, **Vite**
-- **React Router v6**
-- **Formik** (form state/validation)
-- CSS variables (theme tokens) + custom components
+- This project is **for demonstration purposes**. Authentication is purely client-side with `localStorage`; do not use it as-is for production.
+- For real applications, add a secure backend, proper authentication/authorization, server-side validation, and encrypted storage.
+
+---
+
+## Tech Stack
+
+- **React 19**, **Vite 7**
+- **React Router v7**
+- **Formik** for form state and validation
+- CSS variables for theming and custom components
