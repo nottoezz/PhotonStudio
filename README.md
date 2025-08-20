@@ -10,8 +10,6 @@ A lightweight online store built with **React + Vite**, featuring **React Router
   <a href="https://formik.org/">Formik</a>
 </p>
 
-[![Download ZIP](https://img.shields.io/badge/Download-ZIP-0ea5e9?style=for-the-badge&logo=github)](archive/refs/heads/main.zip)
-
 ---
 
 ## ✨ Features
