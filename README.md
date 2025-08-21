@@ -10,6 +10,7 @@ A lightweight demo storefront built with **React + Vite**, featuring client-side
   <a href="https://formik.org/">Formik</a>
 </p>
 
+A cool articale i used to prevent spam https://dev.to/rohitnirban/honeypot-for-spam-prevention-react-tailwind-css-57lh
 ---
 
 ## Features
